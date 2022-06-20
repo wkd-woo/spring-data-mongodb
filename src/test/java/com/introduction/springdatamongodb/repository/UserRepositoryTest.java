@@ -81,7 +81,7 @@ class UserRepositoryTest {
         User user = mongoTemplate.findOne(
                 Query.query(Criteria.where("name").is("Jay")), User.class);
 
-        Optional<User> byId = userRepository.findById(String.valueOf(user.getId()));
+        Optional<User> byId = userRepository.findById(user.getId());
 
         if (byId.isPresent()) {
             User user1 = byId.get();
@@ -96,7 +96,7 @@ class UserRepositoryTest {
                 Query.query(Criteria.where("name").is("Jay")), User.class);
 
 
-        //userRepository.exists(user.getId());
+        //userRepository.exists((user.getId()));
         System.out.println(user.getId());
     }
 
@@ -131,5 +131,6 @@ class UserRepositoryTest {
 
         users.stream().map(user -> "user = " + user).forEach(System.out::println);
     }
+
 
 }
